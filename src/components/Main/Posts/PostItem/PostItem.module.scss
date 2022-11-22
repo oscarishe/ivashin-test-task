@@ -1,6 +1,7 @@
 .container {
     display: flex;
     column-gap: 10px;
+    margin-top: 15px;
 }
 .tag {
     background: #FF0;
@@ -8,10 +9,38 @@
     border-radius: 5px;
 }
 .item {
-    padding:20px;
-    border: 2px solid gray;
-    width:300px;
+    padding:25px;
+    width:420px;
+    background: #FFF;
+    border-radius: 25px;
+    animation: appear 0.5s;
+}
+.text {
+    width: 420px;
+    overflow: hidden;
+}
+@keyframes appear {
+    from {
+        transform: translateX(300px);
+    }
+    to {
+        transform: translateX(0px);
+    }
 }
 .edit {
     border: 2px solid black;
+}
+.button {
+    border: none;
+    padding:10px;
+    color:white;
+    background: #00cccc;
+    font-weight: bold;
+    cursor: pointer;
+}
+.menu {
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 15px;
+    margin-top:15px;
 }

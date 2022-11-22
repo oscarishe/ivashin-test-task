@@ -12,7 +12,9 @@ export const FilterItem: React.FC<IFilterItemProps> = (props) => {
   return (
     <div className={styles.tag}>
       <div>{props.tag}</div>
-      <button onClick={() => dispatch(deleteFilter(props.tag))}>X</button>
+      <button className={styles.tag__remove} onClick={() => dispatch(deleteFilter(props.tag))}>
+        X
+      </button>
     </div>
   );
 };

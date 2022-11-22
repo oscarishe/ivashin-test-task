@@ -1,4 +1,4 @@
-import { SetStateAction, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { IPost } from '../../../../interfaces/interfaces';
 import { postsSlice } from '../../../../state/slice/postsSlice';
@@ -21,7 +21,7 @@ export const PostItem: React.FC<IPostItemProps> = (props) => {
     setActive(false);
     if (!filters.length) setActive(true);
     filters.forEach((tag) => {
-      if (props.data.tags.includes(tag)) setActive(true);
+      if (tags.map((item) => item.toLowerCase()).includes(tag.toLowerCase())) setActive(true);
     });
   }, [filters]);
   const handleInput = (value: string) => {
@@ -34,23 +34,33 @@ export const PostItem: React.FC<IPostItemProps> = (props) => {
   };
   const item = (
     <div className={styles.item}>
-      {!isEditMode && <div>{text}</div>}
+      {!isEditMode && <div className={styles.text}>{text}</div>}
       {isEditMode && (
         <div className={styles.edit}>
           <HighlightWithinTextarea value={text} onChange={handleInput} highlight={tags} />
         </div>
       )}
-      <div>
-        <button onClick={() => dispatch(deletePost(props.data.id))}>Удалить</button>
-        {!isEditMode && <button onClick={() => setEditMode(true)}>Редактировать</button>}
-        {isEditMode && <button onClick={submitEdit}>Сохранить</button>}
-      </div>
       <div className={styles.container}>
         {tags.map((item) => (
           <div className={styles.tag} key={item}>
             {item}
           </div>
         ))}
+      </div>
+      <div className={styles.menu}>
+        <button onClick={() => dispatch(deletePost(props.data.id))} className={styles.button}>
+          Удалить
+        </button>
+        {!isEditMode && (
+          <button onClick={() => setEditMode(true)} className={styles.button}>
+            Редактировать
+          </button>
+        )}
+        {isEditMode && (
+          <button onClick={submitEdit} className={styles.button}>
+            Сохранить
+          </button>
+        )}
       </div>
     </div>
   );

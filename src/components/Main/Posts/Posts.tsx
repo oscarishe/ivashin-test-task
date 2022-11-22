@@ -6,7 +6,7 @@ export const Posts: React.FC = () => {
   const posts = useSelector((state: RootState) => state.postReducer.posts);
   return (
     <div>
-      <h3>Ваши заметки:</h3>
+      <h3 className={styles.title}>Ваши заметки</h3>
       <div className={styles.container}>
         {posts.map((item) => (
           <PostItem data={item} key={item.id} />
