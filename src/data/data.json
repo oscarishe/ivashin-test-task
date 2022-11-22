@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1001,
+        "text": "I go the #gym",
+        "tags": ["#gym"]
+    },
+    {
+        "id": 1002,
+        "text": "Wohooo the first #snow #winter",
+        "tags": ["#snow", "#winter"]
+    },
+    {
+        "id": 1003,
+        "text": "#BestDayEver is today",
+        "tags": ["#BestDayEver"]
+    },
+    {
+        "id": 1004,
+        "text": "I love #pizza and #beer",
+        "tags": ["#pizza", "#beer"]
+    }
+]
