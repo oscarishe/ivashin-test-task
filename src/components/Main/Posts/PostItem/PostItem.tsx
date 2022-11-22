@@ -12,6 +12,7 @@ interface IPostItemProps {
 export const PostItem: React.FC<IPostItemProps> = (props) => {
   const [isEditMode, setEditMode] = useState(false);
   const [isActive, setActive] = useState(true);
+  const [isError, setError] = useState(false);
   const [text, setText] = useState(props.data.text);
   const [tags, setTags] = useState(props.data.tags);
   const dispatch = useDispatch<AppDispatch>();
@@ -29,6 +30,11 @@ export const PostItem: React.FC<IPostItemProps> = (props) => {
     setTags(extractTags(value));
   };
   const submitEdit = () => {
+    if (!text.trim().length) {
+      setError(true);
+      return;
+    }
+    setError(false);
     setEditMode(false);
     dispatch(updatePost({ id: props.data.id, text: text, tags: tags }));
   };
@@ -36,9 +42,12 @@ export const PostItem: React.FC<IPostItemProps> = (props) => {
     <div className={styles.item}>
       {!isEditMode && <div className={styles.text}>{text}</div>}
       {isEditMode && (
-        <div className={styles.edit}>
-          <HighlightWithinTextarea value={text} onChange={handleInput} highlight={tags} />
-        </div>
+        <>
+          <div className={styles.edit}>
+            <HighlightWithinTextarea value={text} onChange={handleInput} highlight={tags} />
+          </div>
+          {isError && <div className={styles.error}>Пост не должен быть пустым</div>}
+        </>
       )}
       <div className={styles.container}>
         {tags.map((item) => (

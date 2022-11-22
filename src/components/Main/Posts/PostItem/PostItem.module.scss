@@ -2,6 +2,8 @@
     display: flex;
     column-gap: 10px;
     margin-top: 15px;
+    width:100%;
+    flex-wrap: wrap;
 }
 .tag {
     background: #FF0;
@@ -43,4 +45,7 @@
     justify-content: flex-end;
     column-gap: 15px;
     margin-top:15px;
+}
+.error {
+    color:#D2042D;
 }
