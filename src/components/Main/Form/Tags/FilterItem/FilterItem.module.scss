@@ -1,0 +1,15 @@
+.tag {
+    display: inline-flex;
+    background: #FF0;
+    padding:2.5px;
+    border-radius: 5px;
+}
+.tag__remove {
+    border:none;
+    outline:none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.7em;
+    font-weight: bold;
+    line-height: 1.8em;
+}
