@@ -16,7 +16,7 @@ export const Tags: React.FC = () => {
     const newFilters = tags
       .trim()
       .split(' ')
-      .map((item) => `#${item}`);
+      .map((item) => (item[0] === '#' ? item : `#${item}`));
     dispatch(addFilters(newFilters));
     setTags('');
   };
